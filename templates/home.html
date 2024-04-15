@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="jumbotron">
+    <h1>Movies, movies and movies!</h1>
+    <p>Welcome to Flip' it Flix</p>
+    <img src="static/Fliplogi.png" height="200">
+
+
+    <h2>Which director are you interested in?</h2>
+    <ul>
+        {% for name in directors  %}
+                <li>{{name[0]}}</li>
+        {% endfor %}
+    </ul>
+
+    {% for person in director_pics  %}
+        {% for pic in person %}
+            <img src="/static/{{pic}}" height="200">
+        {% endfor %}
+    {% endfor %}
+
+
+        {% for id in director_ids  %}
+                <p>{{ id[0] }}</p>
+                <img src="/static/{{director_pics[id[0]-1][0]}}" height="200">
+        {% endfor %}
+
+
+
+
+
+
+
+
+
+
+
+
+</div>
+{% endblock %}

@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="jumbotron">
+
+    <h2>{{ director_name[0][0] }}</h2>
+    <h6>Born: {{ director_date[0][0] }}</h6>
+    <div class="row">
+        <img src="/static/{{director_picture[0][0]}}" width="250" alt="...">
+        <p>{{ director_description[0][0] }}</p>
+    </div>
+    <br><br>
+    <h4>Directed movies</h4>
+    <div class="container-fluid">
+            <div class="row">
+
+                {% for id in film_ids  %}
+                        <div class="card m-4" style="width: 18rem;">
+                            <img src="/static/{{film_pictures[id[0]-1][0]}}" class="card-img-top" alt="...">
+                            <div class="card-body">
+                                <h5 class="card-title">{{film_names[id[0]-1][0]}}</h5>
+                                <p class="card-text">{{ film_descriptions[id[0]-1][0]}}</p>
+                                <a href="http://127.0.0.1:5000/films/{{ id[0] }}" class="btn btn-primary">See more!</a>
+                            </div>
+
+                        </div>
+                {% endfor %}
+
+            </div>
+    </div>
+
+
+
+
+
+
+</div>
+{% endblock %}

@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="jumbotron">
+    <h1>Would you like to add a film?</h1>
+    <p>Fill the forms in and hit submit.</p>
+    <form method="POST">
+        {{ form.hidden_tag() }}
+        {{ form.film_name.label }} {{ form.film_name() }}
+        {{ form.film_description.label }} {{ form.film_description() }}
+        {{ form.film_length.label }} {{ form.film_length() }}
+        {{ form.film_rating.label }} {{ form.film_rating() }}
+        {{ form.film_year.label }} {{ form.film_year() }}
+        {{ form.film_genre.label }} {{ form.film_genre() }}
+        {{ form.film_director.label }} {{ form.film_director() }}
+        {{ form.film_actor.label }} {{ form.film_actor() }}
+        {{ form.film_trailer.label }} {{ form.film_trailer() }}
+        {{ form.film_foto.label }} {{ form.film_foto() }}
+        {{ form.submit() }}
+    </form>
+</div>
+{% endblock %}

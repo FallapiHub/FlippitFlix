@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="jumbotron">
+    <div class="text-center">
+        <h2>{{ film_name[0][0] }} ({{ film_year[0][0] }})</h2>
+
+        <p>Directed by
+            <a href="http://127.0.0.1:5000/directors/{{ film_director[0][0] }}">{{ director_name[film_director[0][0]-1][0] }}</a>
+        </p><br>
+        <iframe width="560" height="315" src="{{ film_trailer[0][0] }}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+        <p>{{ film_description[0][0] }}</p>
+        <p>Genre: {{ film_genre[0][0] }}</p>
+
+
+
+
+
+    </div>
+</div>
+{% endblock %}
