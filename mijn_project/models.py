@@ -1,4 +1,4 @@
-from .__init__ import app, db
+from mijn_project import app, db
 from flask_migrate import Migrate
 
 

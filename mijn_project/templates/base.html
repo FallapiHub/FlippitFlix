@@ -14,10 +14,10 @@
     <div class="navbar-nav">
         <img src="/static/Fliplogi.png" height="70" href="{{ url_for('index') }}">
         <a class="nav-item nav-link justify-content-end" href="{{ url_for('index') }}">Home</a>
-        <a class="nav-item nav-link justify-content-end" href="{{ url_for('all_films') }}">Films</a>
-        <a class="nav-item nav-link justify-content-end"href="{{ url_for('add_director') }}">Add directors</a>
-        <a class="nav-item nav-link justify-content-end"href="{{ url_for('add_film') }}">Add film</a>
-        <a class="nav-item nav-link justify-content-end"href="{{ url_for('add_user') }}">Sign up</a>
+        <a class="nav-item nav-link justify-content-end" href="{{ url_for('Films.all_films') }}">Films</a>
+        <a class="nav-item nav-link justify-content-end"href="{{ url_for('Directors.add_director') }}">Add directors</a>
+        <a class="nav-item nav-link justify-content-end"href="{{ url_for('Films.add_film') }}">Add film</a>
+        <a class="nav-item nav-link justify-content-end"href="{{ url_for('Users.add_user') }}">Sign up</a>
     </div>
 
 
