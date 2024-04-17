@@ -1,13 +1,14 @@
-{% extends "mijn_project.templates.base.html" %}
+{% extends "base.html" %}
 {% block content %}
 <div class="jumbotron">
-    <h1>Would you like to sign in?</h1>
+    <h1>Would you like to register?</h1>
     <p>Fill the forms in and hit submit.</p>
     <form method="POST">
         {{ form.hidden_tag() }}
         {{ form.user_name.label }} {{ form.user_name() }}
         {{ form.user_email.label }} {{ form.user_email() }}
         {{ form.user_password.label }} {{ form.user_password() }}
+        {{ form.pass_confirm.label }} {{ form.pass_confirm() }}
         {{ form.submit() }}
     </form>
 </div>

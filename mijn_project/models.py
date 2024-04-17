@@ -1,8 +1,9 @@
-from mijn_project import app, db
+from mijn_project import db
 from flask_migrate import Migrate
+from werkzeug.security import generate_password_hash,check_password_hash
+from flask_login import UserMixin, LoginManager
 
 
-app.app_context().push()
 
 
 
@@ -81,7 +82,7 @@ class Films(db.Model):
 
 
 
-class Users(db.Model):
+class Users(db.Model, UserMixin):
     __tablename__ = 'Users'
 
     user_id = db.Column(db.Integer,primary_key= True)
@@ -94,10 +95,11 @@ class Users(db.Model):
     def __init__(self, user_name, user_email, user_password, user_role):
         self.user_name = user_name
         self.user_email = user_email
-        self.user_password = user_password
+        self.user_password = generate_password_hash(user_password)
         self.user_role = user_role
 
-    def __repr__(self):
-        return f"{self.user_name}"
+    def check_password(self, user_password):
+        return check_password_hash(self.user_password, user_password)
 
-
+    def get_id(self):
+        return (self.user_id)

@@ -2,6 +2,8 @@ import os
 from flask import Flask, Blueprint, render_template, request, redirect
 from flask_sqlalchemy import SQLAlchemy
 from flask_migrate import Migrate
+from flask_login import LoginManager
+
 
 app = Flask(__name__)
 
@@ -23,3 +25,15 @@ from mijn_project.Users.view import Users_blueprint
 app.register_blueprint(Directors_blueprint,url_prefix="/directors")
 app.register_blueprint(Films_blueprint,url_prefix='/films')
 app.register_blueprint(Users_blueprint,url_prefix='/users')
+
+login_manager = LoginManager()
+login_manager.init_app(app)
+login_manager.login_view = "Users.login"
+
+
+from mijn_project.models import Users
+
+@login_manager.user_loader
+def load_user(user_id):
+    return Users.query.get(user_id)
+
