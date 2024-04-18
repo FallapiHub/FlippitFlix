@@ -18,6 +18,7 @@ class Directors(db.Model):
     director_film_ID = db.relationship('Films',backref='Directors',lazy='dynamic')
 
 
+
     def __init__(self, director_name, director_description, director_picture, director_date):
         self.director_name = director_name
         self.director_description = director_description
@@ -50,24 +51,26 @@ class Films(db.Model):
     film_year = db.Column(db.Integer)
     film_genre = db.Column(db.Text)
     film_director = db.Column(db.Integer,db.ForeignKey('Directors.director_id'))
-    film_actor = db.Column(db.Text)
     film_trailer = db.Column(db.Text)
     film_foto = db.Column(db.Text)
     film_description = db.Column(db.Text)
+    film_summary = db.Column(db.Text)
+    film_roles = db.relationship('Roles',backref='Films',lazy='dynamic')
 
 
 
-    def __init__(self, film_name, film_length, film_rating, film_year, film_genre, film_director, film_actor, film_trailer, film_foto, film_description):
+
+    def __init__(self, film_name, film_length, film_rating, film_year, film_genre, film_director, film_trailer, film_foto, film_description, film_summary):
         self.film_name = film_name
         self.film_length = film_length
         self.film_rating = film_rating
         self.film_year = film_year
         self.film_genre = film_genre
         self.film_director = film_director
-        self.film_actor = film_actor
         self.film_trailer = film_trailer
         self.film_foto = film_foto
         self.film_description = film_description
+        self.film_summary = film_summary
 
 
 
@@ -92,6 +95,7 @@ class Users(db.Model, UserMixin):
     user_role = db.Column(db.Text)
 
 
+
     def __init__(self, user_name, user_email, user_password, user_role):
         self.user_name = user_name
         self.user_email = user_email
@@ -103,3 +107,34 @@ class Users(db.Model, UserMixin):
 
     def get_id(self):
         return (self.user_id)
+
+
+class Roles(db.Model, UserMixin):
+    __tablename__ = 'Roles'
+
+    role_id = db.Column(db.Integer,primary_key= True)
+    role = db.Column(db.Text)
+    role_film = db.Column(db.Integer, db.ForeignKey('Films.film_id'))
+    role_actor = db.Column(db.Integer, db.ForeignKey('Actors.actor_id'))
+
+
+
+    def __init__(self, role, role_filmid, role_actorid):
+        self.role = role
+        self.role_filmid = role_filmid
+        self.role_actorid = role_actorid
+
+
+class Actors(db.Model, UserMixin):
+    __tablename__ = 'Actors'
+
+    actor_id = db.Column(db.Integer,primary_key= True)
+    actor_name = db.Column(db.Text)
+    actor_picture = db.Column(db.Text)
+    actor_role = db.relationship('Roles',backref='Actors',lazy='dynamic')
+
+
+
+    def __init__(self, actor_name, actor_picture):
+        self.actor_name = actor_name
+        self.actor_picture = actor_picture

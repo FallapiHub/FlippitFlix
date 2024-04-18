@@ -21,10 +21,12 @@ Migrate(app,db)
 from mijn_project.Directors.view import Directors_blueprint
 from mijn_project.Films.view import Films_blueprint
 from mijn_project.Users.view import Users_blueprint
+from mijn_project.Actors.view import Actors_blueprint
 
 app.register_blueprint(Directors_blueprint,url_prefix="/directors")
 app.register_blueprint(Films_blueprint,url_prefix='/films')
 app.register_blueprint(Users_blueprint,url_prefix='/users')
+app.register_blueprint(Actors_blueprint,url_prefix='/actors')
 
 login_manager = LoginManager()
 login_manager.init_app(app)

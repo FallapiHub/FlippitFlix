@@ -1,12 +1,28 @@
 {% extends "base.html" %}
 {% block content %}
 <div class="jumbotron">
-    <h1>Movies, movies and movies!</h1>
-    <p>Welcome to Flip' it Flix</p>
-    <img src="/static/Fliplogi.png" height="200">
+    <div class="text-center">
+        <img src="/static/Fliplogi.png" class="img-fluid" height="200">
+        <h1>Movies, movies and movies!</h1>
+
+    <row>
+
+        <h3>
+
+                <a class="nav-item nav-link justify-content-end" href="{{ url_for('Films.all_films') }}">Films</a>
+            {% if current_user.is_authenticated %}
+                <a class="nav-item nav-link justify-content-end"href="{{ url_for('Users.logout') }}">Log out</a>
+            {% else %}
+                <a class="nav-item nav-link justify-content-end"href="{{ url_for('Users.login') }}">Log in</a>
+                <a class="nav-item nav-link justify-content-end"href="{{ url_for('Users.add_user') }}">Register</a>
+            {% endif %}
+
+        </h3>
+
+    </row>
+    </div>
 
 
-    <h2>Which director are you interested in?</h2>
 
 
 

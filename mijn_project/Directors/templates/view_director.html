@@ -2,12 +2,25 @@
 {% block content %}
 <div class="jumbotron">
 
-    <h2>{{ director_name[0][0] }}</h2>
-    <h6>Born: {{ director_date[0][0] }}</h6>
-    <div class="row">
-        <img src="/static/{{director_picture[0][0]}}" width="250" alt="...">
-        <p>{{ director_description[0][0] }}</p>
+
+
+    <div class="container text-center">
+        <h2>{{ director_name[0][0] }}</h2>
+        <h6>Born: {{ director_date[0][0] }}</h6>
+        <br>
+        <br>
+        <div class="row">
+            <div class ="col">
+                <img src="/static/{{director_picture[0][0]}}" width="250" alt="...">
+            </div>
+            <div class="col">
+                <p>{{ director_description[0][0] }}</p>
+            </div>
+        </div>
     </div>
+
+
+
     <br><br>
     <h4>Directed movies</h4>
     <div class="container-fluid">

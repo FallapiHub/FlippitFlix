@@ -1,14 +1,14 @@
 {% extends "base.html" %}
 {% block content %}
 <div class="jumbotron">
-    <h1>Would you like to add a director?</h1>
+    <h1>Add a director</h1>
     <p>Fill the forms in and hit submit.</p>
     <form method="POST">
         {{ form.hidden_tag() }}
-        {{ form.director_name.label }} {{ form.director_name() }}
-        {{ form.director_description.label }} {{ form.director_description() }}
-        {{ form.director_date.label }} {{ form.director_date() }}
-        {{ form.director_picture.label }} {{ form.director_picture() }}
+        {{ form.director_name.label }} {{ form.director_name() }}<br><br>
+        {{ form.director_description.label }} {{ form.director_description() }}<br>
+        {{ form.director_date.label }} {{ form.director_date() }}<br>
+        {{ form.director_picture.label }} {{ form.director_picture() }}<br>
         {{ form.submit() }}
     </form>
 </div>
